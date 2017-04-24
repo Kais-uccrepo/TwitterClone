@@ -20,7 +20,8 @@
 		
 		// To access $_SESSION['user'] values put in an array, show user his username
 		$arr = array_values($_SESSION['user']);
-		echo "Welcome " . $arr[2];
+		$user = $arr[1];
+		echo "Welcome " . $user;
 
 		// open connection
 		$connection = mysqli_connect($host, $username, $password) or die ("Unable to connect!");
@@ -65,7 +66,7 @@
 		// check to see if user has entered anything
 		if ($animal != "") {
 	 		// build SQL query
-			$query = "INSERT INTO symbols (country, animal) VALUES ('$country', '$animal')";
+			$query = "INSERT INTO symbols (country, animal) VALUES ('$user', '$animal')";
 			// run the query
      		$result = mysqli_query($connection,$query) or die ("Error in query: $query. ".mysql_error());
 			// refresh the page to show new update
@@ -96,8 +97,7 @@
     
     <!-- This is the HTML form that appears in the browser -->
    	<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-    	Country: <input type="text" name="country">
-    	National animal: <input type="text" name="animal">
+    	Roast: <input type="text" name="animal">
     	<input type="submit" name="submit">
     </form>
     <form action="logout.php" method="post"><button>Log out</button></form>
