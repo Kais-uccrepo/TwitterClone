@@ -1,5 +1,5 @@
 <html>
-<title>InstantGramme</title>
+<title>Inquire</title>
 <link rel="icon" href="logo.png" />
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<body>
@@ -34,6 +34,7 @@
 		// To access $_SESSION['user'] values put in an array, show user his username
 		$arr = array_values($_SESSION['user']);
 		$user = $arr[1];
+		$search;
 		echo "<h2>Welcome to InstantGramme <span class='label label-default'>" . $user . "</span> </h2>";
 
 		// open connection
@@ -118,11 +119,6 @@
 		<br />
 		<br />
     <!-- This is the HTML form that appears in the browser -->
-   	<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-    	Thoughts: <input type="text" name="animal">
-    	<input type="submit" name="Confirm">
-    </form>
-    <form action="logout.php" method="post"><button>Remove Yourself</button></form>
 
 	</body>
 </html>
