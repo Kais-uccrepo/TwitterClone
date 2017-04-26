@@ -1,6 +1,6 @@
 <?php
 
-    // First we execute our common code to connection to the database and start the session
+    // First we execute our common code to connection to the database and start the session 
     require("common.php");
 
     // This variable will be used to re-display the user's username to them in the
