@@ -27,16 +27,17 @@
 	</nav>
 </div>
 
+
 <div class='container'>
 
 
-<form class="" role="search" action="<?=$_SERVER['PHP_SELF']?>" method="post">
+<!-- <form class="" role="search" action="<?=$_SERVER['PHP_SELF']?>" method="post">
   <div class="">
     <input type="text" class="" placeholder="Inquire" name="hashtagsearch" id="hastagsearch">
   </div>
   <button type="submit" class="waves-effect waves-light btn">Sanction</button>
 </form>
-</div>
+</div> -->
 
 
 	<?php
@@ -47,7 +48,7 @@
 		if(empty($_SESSION['user'])) {
 
 			// If they are not, we redirect them to the login page.
-			$location = "http://" . $_SERVER['HTTP_HOST'] . "twitapp/login.php";
+			$location = "http://" . $_SERVER['HTTP_HOST'] . "/login.php";
 			echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL='.$location.'">';
 			//exit;
 
@@ -59,7 +60,7 @@
 		// To access $_SESSION['user'] values put in an array, show user his username
 		$arr = array_values($_SESSION['user']);
 		$user = $arr[1];
-		$query = "SELECT * FROM symbols";
+		$query = "SELECT * FROM symbols WHERE country = '$user'";
 
 
 		// open connection
@@ -76,7 +77,7 @@
 $result = mysqli_query($connection,$query) or die ("Error in query: $query. ".mysql_error());
 
 $hashtag = $_POST['hashtagsearch'];
-echo "<center><h3>Welcome " . $user . "</h3></center>";
+echo "<h3><center>Your Profile</h3></center>";
 
 // check to see if user has entered anything
 if ($hashtag != "") {
@@ -92,23 +93,23 @@ if ($hashtag != "") {
 		if (mysqli_num_rows($result) > 0) {
 
     		// print them one after another
-    		echo "<div class='container'><table class='striped'>";
-				echo "    <thead>
-      <tr>
+        echo "<div class='container'><table class='striped'>";
+        echo "    <thead>
+        <tr>
         <th>Raster Representation of User</th>
         <th>Alias Surname</th>
         <th>Memorandums</th>
-      </tr>
-    </thead>";
-    		while($row = mysqli_fetch_row($result)) {
-        		echo "<tr>";
-				echo "<td><img width=50 height=50 src=".$image." /></td>";
-        		echo "<td><div class='chip'>" . $row[1]."</div></td>";
-        		echo "<td>".$row[2]."</td>";
-				// echo "<td><a href=".$_SERVER['PHP_SELF']."?id=".$row[0].">Delete</a></td>";
-        		echo "</tr>";
-    		}
-		    echo "</table></div>";
+        </tr>
+        </thead>";
+        while($row = mysqli_fetch_row($result)) {
+            echo "<tr>";
+        echo "<td><img width=50 height=50 src=".$image." /></td>";
+            echo "<td><div class='chip'>" . $row[1]."</div></td>";
+            echo "<td>".$row[2]."</td>";
+        // echo "<td><a href=".$_SERVER['PHP_SELF']."?id=".$row[0].">Delete</a></td>";
+            echo "</tr>";
+        }
+        echo "</table></div>";
 
 		} else {
 
@@ -158,16 +159,24 @@ if ($hashtag != "") {
 
 		<br />
 		<br />
+
+    <div class="container">
+    <form action="<?=($_SERVER['PHP_SELF'])?>" method="post">
+      Sanction a memorandum: <input type="text" name="animal">
+      <input type="submit" name="Sanction">
+    </form>
+  </div>
     <!-- This is the HTML form that appears in the browser -->
-		<footer>
-		<div class="footer-copyright">
+    <footer>
+    <div class="footer-copyright">
             <div class="container">
-							<center>
+              <center>
             © 2017 InstantGramme
-							</center>
+              </center>
             <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
             </div>
           </div>
-		</footer>
+    </footer>
+
 	</body>
 </html>
