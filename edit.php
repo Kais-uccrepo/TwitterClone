@@ -4,9 +4,9 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<body>
 
-<form class="navbar-form navbar-left" role="search" action="search.php">
+<form class="navbar-form navbar-left" role="search" action="<?=$_SERVER['PHP_SELF']?>" method="post">
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Inquire">
+    <input type="text" class="form-control" placeholder="Inquire" name="hashtagsearch" id="hastagsearch">
   </div>
   <button type="submit" class="btn btn-default">Sanction</button>
 </form>
@@ -34,7 +34,8 @@
 		// To access $_SESSION['user'] values put in an array, show user his username
 		$arr = array_values($_SESSION['user']);
 		$user = $arr[1];
-		echo "<h2>Welcome to InstantGramme <span class='label label-default'>" . $user . "</span> </h2>";
+		$query = "SELECT * FROM symbols";
+
 
 		// open connection
 		$connection = mysqli_connect($host, $username, $password) or die ("Unable to connect!");
@@ -43,10 +44,23 @@
 		mysqli_select_db($connection, $dbname) or die ("Unable to select database!");
 
 		// create query
-		$query = "SELECT * FROM symbols";
+
+
 
 		// execute query
+$result = mysqli_query($connection,$query) or die ("Error in query: $query. ".mysql_error());
+
+$hashtag = $_POST['hashtagsearch'];
+echo "<h2>Welcome to InstantGramme <span class='label label-default'>" . $user . "</span> </h2>";
+// check to see if user has entered anything
+if ($hashtag != "") {
+	// build SQL query
+	$query = "SELECT * FROM symbols WHERE animal LIKE '%$hashtag%'";
+	// run the query
 		$result = mysqli_query($connection,$query) or die ("Error in query: $query. ".mysql_error());
+	// refresh the page to show new update
+	// echo "<meta http-equiv='refresh' content='0'>";
+}
 
 		// see if any rows were returned
 		if (mysqli_num_rows($result) > 0) {
@@ -62,7 +76,7 @@
     </thead>";
     		while($row = mysqli_fetch_row($result)) {
         		echo "<tr>";
-				echo "<td>".$row[0]."</td>";
+				echo "<td><img width=50 height=50 src=".$image." /></td>";
         		echo "<td><span class='label label-default'>" . $row[1]."</span></td>";
         		echo "<td>".$row[2]."</td>";
 				// echo "<td><a href=".$_SERVER['PHP_SELF']."?id=".$row[0].">Delete</a></td>";
@@ -78,6 +92,7 @@
 
 		// free result set memory
 		mysqli_free_result($connection,$result);
+
 
 		// set variable values to HTML form inputs
 		$country = $_POST['country'];
@@ -120,7 +135,7 @@
     <!-- This is the HTML form that appears in the browser -->
    	<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
     	Thoughts: <input type="text" name="animal">
-    	<input type="submit" name="Confirm">
+    	<input type="submit" name="Sanction">
     </form>
     <form action="logout.php" method="post"><button>Remove Yourself</button></form>
 

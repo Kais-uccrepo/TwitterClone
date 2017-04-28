@@ -6,7 +6,7 @@
 
 <form class="navbar-form navbar-left" role="search" action="search.php">
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Inquire">
+    <input type="text" class="form-control" placeholder="Inquire" name="hashtag">
   </div>
   <button type="submit" class="btn btn-default">Sanction</button>
 </form>
@@ -34,7 +34,8 @@
 		// To access $_SESSION['user'] values put in an array, show user his username
 		$arr = array_values($_SESSION['user']);
 		$user = $arr[1];
-		$search;
+		$user_search = array_values($_SESSION['hashtag']);
+		echo $user_search;
 		echo "<h2>Welcome to InstantGramme <span class='label label-default'>" . $user . "</span> </h2>";
 
 		// open connection
@@ -45,12 +46,13 @@
 
 		// create query
 		$query = "SELECT * FROM symbols";
+		$search = "SELECT animals FROM symbols LIKE %$user_search%";
 
 		// execute query
 		$result = mysqli_query($connection,$query) or die ("Error in query: $query. ".mysql_error());
 
 		// see if any rows were returned
-		if (mysqli_num_rows($result) > 0) {
+		if (mysqli_num_rows($search) > 0) {
 
     		// print them one after another
     		echo "<table class=table table-bordered>";
