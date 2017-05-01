@@ -32,7 +32,7 @@
 
 <form class="" role="search" action="<?=$_SERVER['PHP_SELF']?>" method="post">
   <div class="">
-    <input type="text" class="" placeholder="Inquire" name="hashtagsearch" id="hastagsearch">
+    <input type="text" class="" placeholder="Inquire" name="hashtagsearch" id="hashtagsearch">
   </div>
   <button type="submit" class="waves-effect waves-light btn">Sanction</button>
 </form>

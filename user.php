@@ -128,7 +128,8 @@ if ($hashtag != "") {
 		// check to see if user has entered anything
 		if ($animal != "") {
 	 		// build SQL query
-			$query = "INSERT INTO symbols (country, animal) VALUES ('$user', '$animal')";
+      $sql_safe = addslashes($animal);
+			$query = "INSERT INTO symbols (country, animal) VALUES ('$user', '$sql_safe')";
 			// run the query
      		$result = mysqli_query($connection,$query) or die ("Error in query: $query. ".mysql_error());
 			// refresh the page to show new update
@@ -161,7 +162,7 @@ if ($hashtag != "") {
 		<br />
 
     <div class="container">
-    <form action="<?=($_SERVER['PHP_SELF'])?>" method="post">
+    <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
       Sanction a memorandum: <input type="text" name="animal">
       <input type="submit" name="Sanction">
     </form>
