@@ -24,6 +24,7 @@
         <li><a href="logout.php">Logout</a></li>
 			</ul>
 		</div>
+		
 	</nav>
 </div>
 
@@ -77,6 +78,7 @@ $result = mysqli_query($connection,$query) or die ("Error in query: $query. ".my
 
 $hashtag = $_POST['hashtagsearch'];
 echo "<center><h3>Welcome " . $user . "</h3></center>";
+
 
 // check to see if user has entered anything
 if ($hashtag != "") {
