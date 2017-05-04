@@ -24,7 +24,7 @@
         <li><a href="logout.php">Logout</a></li>
 			</ul>
 		</div>
-		
+
 	</nav>
 </div>
 
@@ -59,7 +59,9 @@
 
 		// To access $_SESSION['user'] values put in an array, show user his username
 		$arr = array_values($_SESSION['user']);
+		$idk = array_values($_SESSION['image']);
 		$user = $arr[1];
+		$image = "http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg";
 		$query = "SELECT * FROM symbols";
 
 
@@ -78,6 +80,8 @@ $result = mysqli_query($connection,$query) or die ("Error in query: $query. ".my
 
 $hashtag = $_POST['hashtagsearch'];
 echo "<center><h3>Welcome " . $user . "</h3></center>";
+$query_two = "SELECT username,image FROM users";
+$result_two = mysqli_query($connection,$query_two) or die ("Error in query: $query. ".mysql_error());
 
 
 // check to see if user has entered anything
@@ -104,7 +108,23 @@ if ($hashtag != "") {
     </thead>";
     		while($row = mysqli_fetch_row($result)) {
         		echo "<tr>";
-				echo "<td><img width=50 height=50 src=".$image." /></td>";
+						while($row_two = mysqli_fetch_row($result_two)) {
+							if($row_two[0] == $row[1]) {
+								$user_image = $row_two[1];
+								echo $user_image;
+								break;
+							}
+
+
+						}
+
+				if($user_image != ""){
+					echo "<td><img src='$user_image' width=50 height=50/></td>";
+			}
+			else {
+				echo "<td><img src='$image' width=50 height=50/></td>";
+			}
+
         		echo "<td><div class='chip'>" . $row[1]."</div></td>";
         		echo "<td>".$row[2]."</td>";
 				// echo "<td><a href=".$_SERVER['PHP_SELF']."?id=".$row[0].">Delete</a></td>";

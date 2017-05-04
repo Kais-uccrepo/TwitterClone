@@ -106,7 +106,7 @@ if ($hashtag != "") {
         echo "<td><img width=50 height=50 src=".$image." /></td>";
             echo "<td><div class='chip'>" . $row[1]."</div></td>";
             echo "<td>".$row[2]."</td>";
-        // echo "<td><a href=".$_SERVER['PHP_SELF']."?id=".$row[0].">Delete</a></td>";
+        echo "<td><a href=".$_SERVER['PHP_SELF']."?id=".$row[0].">Delete</a></td>";
             echo "</tr>";
         }
         echo "</table></div>";
@@ -123,7 +123,7 @@ if ($hashtag != "") {
 
 		// set variable values to HTML form inputs
 		$country = $_POST['country'];
-    	$animal = $_POST['animal'];
+    $animal = $_POST['animal'];
 
 		// check to see if user has entered anything
 		if ($animal != "") {

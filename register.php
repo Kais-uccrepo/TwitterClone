@@ -118,12 +118,14 @@
                 username,
                 password,
                 salt,
-                email
+                email,
+                image
             ) VALUES (
                 :username,
                 :password,
                 :salt,
-                :email
+                :email,
+                :image
             )
         ";
 
@@ -161,7 +163,8 @@
             ':username' => $_POST['username'],
             ':password' => $password,
             ':salt' => $salt,
-            ':email' => $_POST['email']
+            ':email' => $_POST['email'],
+            ':image' => $_POST['profile']
         );
 
         try
@@ -169,6 +172,8 @@
             // Execute the query to create the user
             $stmt = $db->prepare($query);
             $result = $stmt->execute($query_params);
+
+
         }
         catch(PDOException $ex)
         {
@@ -298,6 +303,7 @@ body {
     <input placeholder="username" type="text" name="username" value="" />
     <input placeholder="email" type="text" name="email" value="" />
     <input placeholder="password" type="password" name="password" value="" />
+    <input placeholder="profile image link" type="text" name="profile" value="" />
     <input id="log" type="submit" value="Register" />
 </form>
 </div>
