@@ -109,11 +109,13 @@ if ($hashtag != "") {
     		while($row = mysqli_fetch_row($result)) {
         		echo "<tr>";
 						while($row_two = mysqli_fetch_row($result_two)) {
-							if($row_two[0] == $row[1]) {
+              echo $row_two[1];
+							if($row[1] == $row_two[0]) {
 								$user_image = $row_two[1];
-								echo $user_image;
+								//echo $user_image
+              }
 								break;
-							}
+
 
 
 						}
