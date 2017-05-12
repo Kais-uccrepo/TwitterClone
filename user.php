@@ -14,7 +14,7 @@
 
 		<div class="navbar-fixed">
 	<nav>
-		<div class="nav-wrapper">
+		<div class="nav-wrapper #4db6ac teal lighten-2">
 			<a href="edit.php" class="brand-logo"><img width="50" height="50" src="logo.png"</a>
 			<ul class="right hide-on-med-and-down">
 				<li><a href="edit.php">Home</a></li>
