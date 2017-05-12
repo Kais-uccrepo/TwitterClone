@@ -59,7 +59,6 @@
 
 		// To access $_SESSION['user'] values put in an array, show user his username
 		$arr = array_values($_SESSION['user']);
-		$idk = array_values($_SESSION['image']);
 		$user = $arr[1];
 		$image = "http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg";
 		$query = "SELECT * FROM symbols";
@@ -95,45 +94,25 @@ if ($hashtag != "") {
 }
 
 		// see if any rows were returned
-		if (mysqli_num_rows($result) > 0) {
+    if (mysqli_num_rows($result) > 0) {
 
     		// print them one after another
-    		echo "<div class='container'><table class='striped'>";
-				echo "    <thead>
-      <tr>
+        echo "<div class='container'><table class='striped'>";
+        echo "    <thead>
+        <tr>
         <th>Raster Representation of User</th>
         <th>Alias Surname</th>
         <th>Memorandums</th>
-      </tr>
-    </thead>";
-    		while($row = mysqli_fetch_row($result)) {
-        		echo "<tr>";
-						while($row_two = mysqli_fetch_row($result_two)) {
-              echo $row_two[1];
-							if($row[1] == $row_two[0]) {
-								$user_image = $row_two[1];
-                break;
-								//echo $user_image
-              }
-								break;
-
-
-
-						}
-
-				if($user_image != ""){
-					echo "<td><img src='$user_image' width=50 height=50/></td>";
-			}
-			else {
-				echo "<td><img src='$image' width=50 height=50/></td>";
-			}
-
-        		echo "<td><div class='chip'>" . $row[1]."</div></td>";
-        		echo "<td>".$row[2]."</td>";
-				// echo "<td><a href=".$_SERVER['PHP_SELF']."?id=".$row[0].">Delete</a></td>";
-        		echo "</tr>";
-    		}
-		    echo "</table></div>";
+        </tr>
+        </thead>";
+        while($row = mysqli_fetch_row($result)) {
+            echo "<tr>";
+        echo "<td><img width=50 height=50 src=".$row[3]." /></td>";
+            echo "<td><div class='chip'>" . $row[1]."</div></td>";
+            echo "<td>".$row[2]."</td>";
+            echo "</tr>";
+        }
+        echo "</table></div>";
 
 		} else {
 

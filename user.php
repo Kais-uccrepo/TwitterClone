@@ -112,7 +112,9 @@ echo "<h3><center>Your Profile</h3></center>";
 		if ($animal != "") {
 	 		// build SQL query
       $sql_safe = addslashes($animal);
-			$query = "INSERT INTO symbols (country, animal) VALUES ('$user', '$sql_safe')";
+      $temp_image = $arr[3];
+			$query = "INSERT INTO symbols (country, animal, image) VALUES ('$user', '$sql_safe', '$arr[3]')";
+
 			// run the query
      		$result = mysqli_query($connection,$query) or die ("Error in query: $query. ".mysql_error());
 			// refresh the page to show new update
