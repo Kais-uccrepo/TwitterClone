@@ -61,7 +61,7 @@
 		$arr = array_values($_SESSION['user']);
 		$user = $arr[1];
 		$image = "http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg";
-		$query = "SELECT * FROM symbols";
+		$query = "SELECT * FROM symbols ORDER BY id DESC";
 
 
 		// open connection

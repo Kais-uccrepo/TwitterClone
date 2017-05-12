@@ -226,7 +226,7 @@
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #4CAF50;
+  background: #009688;
   width: 100%;
   border: 0;
   padding: 15px;
@@ -237,7 +237,7 @@
   cursor: pointer;
 }
 .form #log:hover,.form #log:active,.form #log:focus {
-  background: #43A047;
+  background: #00695c;
 }
 .form .message {
   margin: 15px 0 0;
@@ -245,7 +245,7 @@
   font-size: 12px;
 }
 .form .message a {
-  color: #4CAF50;
+  color: #00695c;
   text-decoration: none;
 }
 .form .register-form {
@@ -285,11 +285,7 @@
   color: #EF3B3A;
 }
 body {
-  background: #76b852; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
-  background: -moz-linear-gradient(right, #76b852, #8DC26F);
-  background: -o-linear-gradient(right, #76b852, #8DC26F);
-  background: linear-gradient(to left, #76b852, #8DC26F);
+  background: #80cbc4; /* fallback for old browsers */
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -305,6 +301,7 @@ body {
     <input placeholder="password" type="password" name="password" value="" />
     <input placeholder="profile image link" type="text" name="profile" value="" />
     <input id="log" type="submit" value="Register" />
+    <p class="message">Already have an account? <a href="login.php">Login.</a></p>
 </form>
 </div>
 </div>

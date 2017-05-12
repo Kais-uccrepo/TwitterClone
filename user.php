@@ -149,7 +149,7 @@ echo "<h3><center>Your Profile</h3></center>";
     <div class="container">
     <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
       Sanction a memorandum: <input type="text" name="animal">
-      <input type="submit" name="Sanction">
+      <input class="waves-effect waves-light btn" type="submit" name="Sanction">
     </form>
   </div>
     <!-- This is the HTML form that appears in the browser -->
