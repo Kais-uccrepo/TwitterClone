@@ -31,14 +31,6 @@
 <div class='container'>
 
 
-<!-- <form class="" role="search" action="<?=$_SERVER['PHP_SELF']?>" method="post">
-  <div class="">
-    <input type="text" class="" placeholder="Inquire" name="hashtagsearch" id="hastagsearch">
-  </div>
-  <button type="submit" class="waves-effect waves-light btn">Sanction</button>
-</form>
-</div> -->
-
 
 	<?php
 
@@ -60,6 +52,7 @@
 		// To access $_SESSION['user'] values put in an array, show user his username
 		$arr = array_values($_SESSION['user']);
 		$user = $arr[1];
+    $image = $arr[5];
 		$query = "SELECT * FROM symbols WHERE country = '$user'";
 
 
@@ -76,18 +69,8 @@
 		// execute query
 $result = mysqli_query($connection,$query) or die ("Error in query: $query. ".mysql_error());
 
-$hashtag = $_POST['hashtagsearch'];
 echo "<h3><center>Your Profile</h3></center>";
 
-// check to see if user has entered anything
-if ($hashtag != "") {
-	// build SQL query
-	$query = "SELECT * FROM symbols WHERE animal LIKE '%$hashtag%'";
-	// run the query
-		$result = mysqli_query($connection,$query) or die ("Error in query: $query. ".mysql_error());
-	// refresh the page to show new update
-	// echo "<meta http-equiv='refresh' content='0'>";
-}
 
 		// see if any rows were returned
 		if (mysqli_num_rows($result) > 0) {
@@ -103,7 +86,7 @@ if ($hashtag != "") {
         </thead>";
         while($row = mysqli_fetch_row($result)) {
             echo "<tr>";
-        echo "<td><img width=50 height=50 src=".$image." /></td>";
+        echo "<td><img width=50 height=50 src=".$arr[3]." /></td>";
             echo "<td><div class='chip'>" . $row[1]."</div></td>";
             echo "<td>".$row[2]."</td>";
         echo "<td><a href=".$_SERVER['PHP_SELF']."?id=".$row[0].">Delete</a></td>";

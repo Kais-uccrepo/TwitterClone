@@ -112,6 +112,7 @@ if ($hashtag != "") {
               echo $row_two[1];
 							if($row[1] == $row_two[0]) {
 								$user_image = $row_two[1];
+                break;
 								//echo $user_image
               }
 								break;
