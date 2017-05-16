@@ -23,6 +23,10 @@
             die("Please enter a password.");
         }
 
+        if($_POST['password']!= $_POST['confirm_password']) {
+          die("Passwords do not match!");
+        }
+
         // Make sure the user entered a valid E-Mail address
         // filter_var is a useful PHP function for validating form input, see:
         // http://us.php.net/manual/en/function.filter-var.php
@@ -299,6 +303,7 @@ body {
     <input placeholder="username" type="text" name="username" value="" />
     <input placeholder="email" type="text" name="email" value="" />
     <input placeholder="password" type="password" name="password" value="" />
+    <input placeholder="confirm password" type="password" name="confirm_password" value="" />
     <input placeholder="profile image link" type="text" name="profile" value="" />
     <input id="log" type="submit" value="Register" />
     <p class="message">Already have an account? <a href="login.php">Login.</a></p>
