@@ -53,7 +53,7 @@
 		$arr = array_values($_SESSION['user']);
 		$user = $arr[1];
     $image = $arr[5];
-		$query = "SELECT * FROM symbols WHERE country = '$user'";
+		$query = "SELECT * FROM symbols WHERE country = '$user' ORDER BY id DESC";
 
 
 		// open connection
@@ -86,9 +86,9 @@ echo "<h3><center>Your Profile</h3></center>";
         </thead>";
         while($row = mysqli_fetch_row($result)) {
             echo "<tr>";
-        echo "<td><img width=50 height=50 src=".$arr[3]." /></td>";
+        echo "<td><img width=60 height=60 src=".$arr[3]." /></td>";
             echo "<td><div class='chip'>" . $row[1]."</div></td>";
-            echo "<td>".$row[2]."</td>";
+            echo "<td id='hov'>".$row[2]."</td>";
         echo "<td><a href=".$_SERVER['PHP_SELF']."?id=".$row[0].">Delete</a></td>";
             echo "</tr>";
         }
@@ -97,7 +97,9 @@ echo "<h3><center>Your Profile</h3></center>";
 		} else {
 
     		// print status message
-    		echo "No rows found!";
+    		echo "<center>
+        You haven't made any posts yet!
+        </center>";
 		}
 
 		// free result set memory

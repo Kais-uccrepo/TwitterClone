@@ -107,7 +107,7 @@ if ($hashtag != "") {
         </thead>";
         while($row = mysqli_fetch_row($result)) {
             echo "<tr>";
-        echo "<td><img width=50 height=50 src=".$row[3]." /></td>";
+        echo "<td><img width=60 height=60 src=".$row[3]." /></td>";
             echo "<td><div class='chip'>" . $row[1]."</div></td>";
             echo "<td>".$row[2]."</td>";
             echo "</tr>";
