@@ -86,7 +86,7 @@ $result_two = mysqli_query($connection,$query_two) or die ("Error in query: $que
 // check to see if user has entered anything
 if ($hashtag != "") {
 	// build SQL query
-	$query = "SELECT * FROM symbols WHERE animal LIKE '%$hashtag%'";
+	$query = "SELECT * FROM symbols WHERE animal LIKE '%".$hashtag."%' OR country LIKE '".$hashtag."'";
 	// run the query
 		$result = mysqli_query($connection,$query) or die ("Error in query: $query. ".mysql_error());
 	// refresh the page to show new update
