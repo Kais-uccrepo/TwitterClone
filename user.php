@@ -114,6 +114,7 @@ echo "<h3><center>Your Profile</h3></center>";
 		if ($animal != "") {
 	 		// build SQL query
       $sql_safe = addslashes($animal);
+      $sql_safe = htmlentities($sql_safe);
       $temp_image = $arr[3];
 			$query = "INSERT INTO symbols (country, animal, image) VALUES ('$user', '$sql_safe', '$arr[3]')";
 

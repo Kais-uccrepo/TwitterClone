@@ -164,11 +164,11 @@
         // store the original password; only the hashed version of it.  We do store
         // the salt (in its plaintext form; this is not a security risk).
         $query_params = array(
-            ':username' => $_POST['username'],
-            ':password' => $password,
+            ':username' => htmlentities($_POST['username']),
+            ':password' => htmlentities($password),
             ':salt' => $salt,
-            ':email' => $_POST['email'],
-            ':image' => $_POST['profile']
+            ':email' => htmlentities($_POST['email']),
+            ':image' => htmlentities($_POST['profile'])
         );
 
         try
