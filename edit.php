@@ -28,9 +28,7 @@
 	</nav>
 </div>
 
-<div class='container'>
-
-
+<div class="container">
 <form class="" role="search" action="<?=$_SERVER['PHP_SELF']?>" method="post">
   <div class="">
     <input type="text" class="" placeholder="Inquire" name="hashtagsearch" id="hashtagsearch">
