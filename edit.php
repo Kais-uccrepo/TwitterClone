@@ -76,6 +76,8 @@
 $result = mysqli_query($connection,$query) or die ("Error in query: $query. ".mysql_error());
 
 $hashtag = $_POST['hashtagsearch'];
+$hashtag = addslashes($hashtag);
+$hashtag = htmlentities($hashtag);
 echo "<center><h3>Welcome " . $user . "</h3></center>";
 $query_two = "SELECT username,image FROM users";
 $result_two = mysqli_query($connection,$query_two) or die ("Error in query: $query. ".mysql_error());
